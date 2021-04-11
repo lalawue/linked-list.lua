@@ -58,12 +58,12 @@ MacBook Pro 2017, 3.1 GHz Intel Core i5
 
 ```
 -- performance, round:1
-push 10000000 cost 0.436185
-pop  10000000 cost 0.036015
--- performance, round:2 push_mean:0.436185 pop_mean:0.036015
-push 10000000 cost 0.133759
-pop  10000000 cost 0.036306
--- performance, round:3 push_mean:0.284972 pop_mean:0.0361605
-push 1000,000, cost 0.377446
-pop  1000,000, cost 0.121516
+push 10000000 cost 0.439592
+pop  10000000 cost 0.036406
+-- performance, round:2 push_mean:0.439592 pop_mean:0.036406
+push 10000000 cost 0.133136
+pop  10000000 cost 0.036463
+-- performance, round:3 push_mean:0.286364 pop_mean:0.0364345
+push 10000000 cost 0.13311
+pop  10000000 cost 0.03642
 ```
