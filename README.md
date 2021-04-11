@@ -45,7 +45,7 @@ for i, v in ipairs(lst:range(2, 3)) do
 end
 
 print("-- range reverse")
-for i, v in ipairs(lst:range(3, 2)) do
+for i, v in ipairs(lst:range(6, 5)) do
    print(i, v)                  -- should print '8, table'
 end
 
