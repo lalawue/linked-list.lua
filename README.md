@@ -54,7 +54,7 @@ print("-- finish")
 
 # Performance
 
-MacBook Pro 2017, 3.1 GHz Intel Core i5
+3.29 GHz Intel Core i5 GHz Intel Core i5
 
 ```
 -- performance, round:1
