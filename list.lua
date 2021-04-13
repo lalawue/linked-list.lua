@@ -8,6 +8,9 @@
 local _M = {}
 _M.__index = _M
 
+-- dummy value
+local dummy = {}
+
 -- list count
 function _M:count()
     return self._count
@@ -23,9 +26,17 @@ function _M:last()
     return self._last
 end
 
+-- contains
+function _M:contains(value)
+    if value == nil then
+        return false
+    end
+    return self._value[value] ~= nil
+end
+
 -- push to first
 function _M:pushf(value)
-    if value == nil then
+    if self:contains(value) then
         return false
     end
     self._next[value] = self._first
@@ -36,13 +47,14 @@ function _M:pushf(value)
         self._prev[self._first] = value
         self._first = value
     end
+    self._value[value] = dummy
     self._count = self._count + 1
     return true
 end
 
 -- push to last
 function _M:pushl(value)
-    if value == nil then
+    if self:contains(value) then
         return false
     end
     self._prev[value] = self._last
@@ -53,14 +65,15 @@ function _M:pushl(value)
         self._next[self._last] = value
         self._last = value
     end
+    self._value[value] = dummy
     self._count = self._count + 1
     return true
 end
 
 -- remove element in list
 function _M:remove(value)
-    if self._count <= 0 then
-        return nil         
+    if not self:contains(value) then
+        return nil
     end
     local next = self._next[value]
     local prev = self._prev[value]
@@ -72,6 +85,7 @@ function _M:remove(value)
     end
     self._next[value] = nil
     self._prev[value] = nil
+    self._value[value] = nil
     if value == self._first then
         self._first = next
     end
@@ -162,6 +176,7 @@ local function _new()
         _count = 0,
         _first = nil,
         _last = nil,
+        _value = {},
         _prev = {},
         _next = {},
     }
