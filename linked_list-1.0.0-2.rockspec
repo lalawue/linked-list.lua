@@ -1,5 +1,5 @@
 package = "liked_list"
-version = "1.0.0-1"
+version = "1.0.0-2"
 source = {
    url = "git+https://github.com/lalawue/linked_list.lua/"
 }
@@ -15,6 +15,6 @@ description = {
 build = {
    type = "builtin",
    modules = {
-      list = { "list.lua" }
+      list = { "linked_list.lua" }
    }
 }
