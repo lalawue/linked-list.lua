@@ -1,4 +1,4 @@
-package = "liked_list"
+package = "linked_list"
 version = "1.0.0-2"
 source = {
    url = "git+https://github.com/lalawue/linked_list.lua/"
