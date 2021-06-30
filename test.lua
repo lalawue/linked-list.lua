@@ -1,7 +1,7 @@
 --[[
    list will keep only one value instance, for using table to record prev/next value
 ]]
-local lst = require("list").new()
+local lst = require("linked-list").new()
 
 lst:pushl("b") -- push last 'b'
 lst:pushf("a") -- push first 'a'

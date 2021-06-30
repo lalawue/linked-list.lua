@@ -1,7 +1,7 @@
 
 # About
 
-list.lua was a double link list implement.
+linked-list.lua was a double linked list implement.
 
 # Usage
 
@@ -10,7 +10,7 @@ list.lua was a double link list implement.
    list will keep only one value instance, for using table to record prev/next value
 ]]
 
-local lst = require("list").new()
+local lst = require("linked-list").new()
 
 lst:pushl("b") -- push last 'b'
 lst:pushf("a") -- push first 'a'
