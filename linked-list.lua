@@ -10,6 +10,9 @@ _M.__index = _M
 
 -- dummy value
 local dummy = {}
+local mmin = math.min
+local mmax = math.max
+local setmetatable = setmetatable
 
 -- list count
 function _M:count()
@@ -37,7 +40,7 @@ end
 -- push to first
 function _M:pushf(value)
     if value == nil or self:contains(value) then
-        return
+        return false
     end
     self._next[value] = self._first
     if self._first == nil then
@@ -49,7 +52,7 @@ function _M:pushf(value)
     end
     self._value[value] = dummy
     self._count = self._count + 1
-    return
+    return true
 end
 
 -- push to last
@@ -106,11 +109,21 @@ function _M:popl()
     return self:remove(self._last)
 end
 
+-- clear all object, free old table
+function _M:clear()
+    self._count = 0
+    self._first = nil
+    self._last = nil
+    self._value = {}
+    self._prev = {}
+    self._next = {}
+end
+
 -- with range index
 function _M:range(from, to)
     from = from or 1
     to = to or self._count
-    if self._count <= 0 or math.min(from,to) < 1 or math.max(from,to) > self._count then
+    if self._count <= 0 or mmin(from,to) < 1 or mmax(from,to) > self._count then
         return {}
     end
     local range = {}
@@ -140,12 +153,14 @@ function _M:range(from, to)
     return range
 end
 
+-- return nil for walk
+local function _return_nil()
+end
+
 -- with element iterator
 function _M:walk(seq)
     if self._count <= 0 then
-        return function()
-            return nil
-        end
+        return _return_nil
     end
     if seq == nil then
         seq = true
@@ -178,7 +193,7 @@ local function _new()
         _last = nil,
         _value = {},
         _prev = {},
-        _next = {},
+        _next = {}
     }
     return setmetatable(ins, _M)
 end
